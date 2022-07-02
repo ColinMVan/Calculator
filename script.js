@@ -52,7 +52,7 @@ function operate(operator, n, n2) {
       return add(n, n2);
     case "-":
       return subtract(n, n2);
-    case "*":
+    case "x":
       return multiply(n, n2);
     case "/":
       return divide(n, n2);
