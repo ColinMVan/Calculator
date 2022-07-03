@@ -21,6 +21,7 @@ function displayResults(str) {
   }
   results += str;
   display.textContent = results;
+  clear.textContent = "C";
 }
 
 // clears all of the operator colors after clicked
@@ -45,6 +46,7 @@ clear.addEventListener("click", () => {
   display.textContent = "0";
   equation = [];
   clearOperatorColors();
+  clear.textContent = "AC";
 });
 
 // pushes the first number and operator to the array
