@@ -6,6 +6,7 @@ let secondNum;
 let operator = "";
 
 let clickedOperator;
+const operators = document.querySelectorAll(".orangeNum");
 
 function displayResults(str) {
   if (results === "0") {
@@ -32,9 +33,13 @@ clear.addEventListener("click", () => {
   firstNum = 0;
   secondNum = 0;
   operator = "";
+
+  operators.forEach((e) => {
+    e.style.backgroundColor = "orange";
+    e.style.color = "white";
+  });
 });
 
-const operators = document.querySelectorAll(".orangeNum");
 operators.forEach((e) => {
   e.addEventListener("click", () => {
     firstNum = results;
