@@ -16,13 +16,18 @@ function displayResults(str) {
   display.textContent = results;
 }
 
+function clearOperatorColors() {
+  operators.forEach((e) => {
+    e.style.backgroundColor = "orange";
+    e.style.color = "white";
+  });
+}
+
 const nums = document.querySelectorAll(".num");
 nums.forEach((e) => {
   e.addEventListener("click", () => {
     displayResults(e.textContent);
-    document.querySelector(`#${clickedOperator}`).style.backgroundColor =
-      "orange";
-    document.querySelector(`#${clickedOperator}`).style.color = "white";
+    clearOperatorColors();
   });
 });
 
@@ -33,21 +38,17 @@ clear.addEventListener("click", () => {
   firstNum = 0;
   secondNum = 0;
   operator = "";
-
-  operators.forEach((e) => {
-    e.style.backgroundColor = "orange";
-    e.style.color = "white";
-  });
+  clearOperatorColors();
 });
 
 operators.forEach((e) => {
   e.addEventListener("click", () => {
+    clearOperatorColors();
     firstNum = results;
     operator = e.textContent;
     e.style.backgroundColor = "white";
     e.style.color = "orange";
     results = "";
-    clickedOperator = e.id;
   });
 });
 
@@ -55,6 +56,9 @@ const equal = document.querySelector("#equals");
 equal.addEventListener("click", () => {
   secondNum = Number(results);
   results = operate(operator, Number(firstNum), secondNum);
+  if (results === undefined) {
+    results = "0";
+  }
   display.textContent = results;
 });
 
