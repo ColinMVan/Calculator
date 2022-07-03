@@ -3,6 +3,8 @@ const operators = document.querySelectorAll(".orangeNum");
 const nums = document.querySelectorAll(".num");
 const clear = document.querySelector("#clear");
 const equal = document.querySelector("#equals");
+const plusminus = document.querySelector("#plusminus");
+const percentage = document.querySelector("#percentage");
 
 display.textContent = "0";
 
@@ -67,6 +69,11 @@ operators.forEach((e) => {
     }
     results = "";
   });
+});
+
+percentage.addEventListener("click", () => {
+  results *= 0.01;
+  display.textContent = results;
 });
 
 // solves and displays the answer
