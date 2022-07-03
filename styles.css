@@ -22,7 +22,8 @@ body {
   width: min(90%, 500px);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 1rem;
+  align-items: end;
   background-color: black;
   padding: 2em;
   padding-top: 4em;
@@ -34,18 +35,19 @@ body {
   border: none;
   border-radius: 100vmax;
   font-size: 2rem;
-  transition: background-color 200ms ease-in;
+  transition: background-color 200ms ease-in, transform 200ms ease-in;
   aspect-ratio: 1;
 }
 .calculator button:hover {
   cursor: pointer;
   background-color: hsl(0deg, 0%, 45%);
+  transform: translateY(-4px);
 }
 .calculator .orangeNum {
   background-color: orange;
 }
 .calculator .orangeNum:hover {
-  background-color: hsl(40deg, 100%, 72%);
+  background-color: hsl(30deg, 100%, 75%);
 }
 .calculator #zero {
   grid-column: span 2;
@@ -76,5 +78,5 @@ body {
   background-color: orange;
 }
 .calculator #equals:hover {
-  background-color: hsl(40deg, 100%, 72%);
+  background-color: hsl(35deg, 100%, 75%);
 }/*# sourceMappingURL=styles.css.map */

@@ -23,7 +23,8 @@ body {
   width: min(90%, 500px);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 1rem;
+  align-items: end;
   background-color: black;
   padding: 2em;
   padding-top: 4em;
@@ -35,12 +36,13 @@ body {
     border: none;
     border-radius: 100vmax;
     font-size: 2rem;
-    transition: background-color 200ms ease-in;
+    transition: background-color 200ms ease-in, transform 200ms ease-in;
     aspect-ratio: 1;
 
     &:hover {
       cursor: pointer;
       background-color: hsl(0, 0%, 45%);
+      transform: translateY(-4px);
     }
   }
 
@@ -48,7 +50,7 @@ body {
     background-color: orange;
 
     &:hover {
-      background-color: hsl(40, 100%, 72%);
+      background-color: hsl(30, 100%, 75%);
     }
   }
 
@@ -86,7 +88,7 @@ body {
     background-color: orange;
 
     &:hover {
-      background-color: hsl(40, 100%, 72%);
+      background-color: hsl(35, 100%, 75%);
     }
   }
 }
