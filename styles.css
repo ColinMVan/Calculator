@@ -74,7 +74,7 @@ body {
   font-size: 3rem;
 }
 .calculator #resultsBar p {
-  margin-right: 1.5rem;
+  margin-right: 4vw;
 }
 .calculator #equals {
   background-color: orange;
