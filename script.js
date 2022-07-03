@@ -4,14 +4,16 @@ const nums = document.querySelectorAll(".num");
 const clear = document.querySelector("#clear");
 const equal = document.querySelector("#equals");
 
+display.textContent = "0";
+
 let results = "";
 let equation = [];
 
 // displays the current user actions in the display bar at the top
 function displayResults(str) {
-  if (results === "0") {
-    results = "";
-  }
+  //   if (results === "0") {
+  //     results = "";
+  //   }
   results += str;
   display.textContent = results;
 }
@@ -34,8 +36,8 @@ nums.forEach((e) => {
 
 // clears everything
 clear.addEventListener("click", () => {
-  results = "0";
-  display.textContent = results;
+  results = "";
+  display.textContent = "0";
   equation = [];
   clearOperatorColors();
 });
@@ -46,19 +48,32 @@ operators.forEach((e) => {
     clearOperatorColors();
     e.style.backgroundColor = "white";
     e.style.color = "orange";
-    equation.push(Number(results));
-    equation.push(e.textContent);
+
+    if (results === "") {
+      equation.push(e.textContent);
+    } else {
+      equation.push(Number(results));
+      equation.push(e.textContent);
+    }
+
+    if (
+      isNaN(equation[equation.length - 1]) &&
+      isNaN(equation[equation.length - 2])
+    ) {
+      equation.splice(equation.length - 2, 1);
+    }
     results = "";
   });
 });
 
 // solves and displays the answer
 equal.addEventListener("click", () => {
-  if (results !== "0" || isNaN(results)) {
+  if (!isNaN(results)) {
     equation.push(results);
   }
   //   equation.forEach((e) => console.log(e));
   //   console.log(equation.length);
+  clearOperatorColors();
   completeEqual(equation);
 });
 
@@ -107,5 +122,7 @@ function completeEqual(arr) {
     arr.splice(0, 3, answer);
   }
   let finalAnswer = operate(Number(arr[0]), arr[1], Number(arr[2]));
-  display.textContent = finalAnswer;
+  equation = [];
+  results = finalAnswer;
+  display.textContent = results;
 }
