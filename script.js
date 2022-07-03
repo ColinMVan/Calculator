@@ -68,13 +68,15 @@ operators.forEach((e) => {
 
 // solves and displays the answer
 equal.addEventListener("click", () => {
-  if (!isNaN(results)) {
-    equation.push(results);
+  if (equation.length !== 0) {
+    if (!isNaN(results)) {
+      equation.push(results);
+    }
+    //   equation.forEach((e) => console.log(e));
+    //   console.log(equation.length);
+    clearOperatorColors();
+    completeEqual(equation);
   }
-  //   equation.forEach((e) => console.log(e));
-  //   console.log(equation.length);
-  clearOperatorColors();
-  completeEqual(equation);
 });
 
 // gives the number of decimals in the answer so the answer is limited
@@ -117,12 +119,16 @@ function operate(n, operator, n2) {
 
 // completes the entire equation
 function completeEqual(arr) {
-  while (arr.length > 3) {
-    let answer = operate(Number(arr[0]), arr[1], Number(arr[2]));
-    arr.splice(0, 3, answer);
+  if (arr[0] == 0 && arr[1] == "/" && arr[2] == 0) {
+    display.textContent = "Wow you're really smart";
+  } else {
+    while (arr.length > 3) {
+      let answer = operate(Number(arr[0]), arr[1], Number(arr[2]));
+      arr.splice(0, 3, answer);
+    }
+    let finalAnswer = operate(Number(arr[0]), arr[1], Number(arr[2]));
+    equation = [];
+    results = finalAnswer;
+    display.textContent = results;
   }
-  let finalAnswer = operate(Number(arr[0]), arr[1], Number(arr[2]));
-  equation = [];
-  results = finalAnswer;
-  display.textContent = results;
 }
