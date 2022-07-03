@@ -50,16 +50,20 @@ body {
   background-color: var(--lightGray);
   color: black;
 }
-.calculator #results {
+.calculator #resultsBar {
   background-color: var(--darkGray);
   grid-column: span 4;
   aspect-ratio: 4/1;
   border-radius: 100vmax;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   color: white;
+  font-size: 3rem;
+}
+.calculator #resultsBar p {
+  padding-right: 1em;
 }
 .calculator #equals {
-  background-color: purple;
+  background-color: orange;
 }/*# sourceMappingURL=styles.css.map */
