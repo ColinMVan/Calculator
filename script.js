@@ -1,13 +1,13 @@
-let display = document.querySelector("#results");
-let results = "";
-
-let firstNum;
-let secondNum;
-let operator = "";
-
-let clickedOperator;
+const display = document.querySelector("#results");
 const operators = document.querySelectorAll(".orangeNum");
+const nums = document.querySelectorAll(".num");
+const clear = document.querySelector("#clear");
+const equal = document.querySelector("#equals");
 
+let results = "";
+let equation = [];
+
+// displays the current user actions in the display bar at the top
 function displayResults(str) {
   if (results === "0") {
     results = "";
@@ -16,6 +16,7 @@ function displayResults(str) {
   display.textContent = results;
 }
 
+// clears all of the operator colors after clicked
 function clearOperatorColors() {
   operators.forEach((e) => {
     e.style.backgroundColor = "orange";
@@ -23,7 +24,7 @@ function clearOperatorColors() {
   });
 }
 
-const nums = document.querySelectorAll(".num");
+// adds the number clicked to the results
 nums.forEach((e) => {
   e.addEventListener("click", () => {
     displayResults(e.textContent);
@@ -31,37 +32,37 @@ nums.forEach((e) => {
   });
 });
 
-const clear = document.querySelector("#clear");
+// clears everything
 clear.addEventListener("click", () => {
   results = "0";
   display.textContent = results;
-  firstNum = 0;
-  secondNum = 0;
-  operator = "";
+  equation = [];
   clearOperatorColors();
 });
 
+// pushes the first number and operator to the array
 operators.forEach((e) => {
   e.addEventListener("click", () => {
     clearOperatorColors();
-    firstNum = results;
-    operator = e.textContent;
     e.style.backgroundColor = "white";
     e.style.color = "orange";
+    equation.push(Number(results));
+    equation.push(e.textContent);
     results = "";
   });
 });
 
-const equal = document.querySelector("#equals");
+// solves and displays the answer
 equal.addEventListener("click", () => {
-  secondNum = Number(results);
-  results = operate(operator, Number(firstNum), secondNum);
-  if (results === undefined) {
-    results = "0";
+  if (results !== "0" || isNaN(results)) {
+    equation.push(results);
   }
-  display.textContent = results;
+  //   equation.forEach((e) => console.log(e));
+  //   console.log(equation.length);
+  completeEqual(equation);
 });
 
+// gives the number of decimals in the answer so the answer is limited
 const decimalCount = (num) => {
   // Convert to String
   const numStr = String(num);
@@ -85,7 +86,8 @@ const divide = (n, n2) => {
   }
 };
 
-function operate(operator, n, n2) {
+// operates the given numbers based on the operator
+function operate(n, operator, n2) {
   switch (operator) {
     case "+":
       return add(n, n2);
@@ -96,4 +98,14 @@ function operate(operator, n, n2) {
     case "/":
       return divide(n, n2);
   }
+}
+
+// completes the entire equation
+function completeEqual(arr) {
+  while (arr.length > 3) {
+    let answer = operate(Number(arr[0]), arr[1], Number(arr[2]));
+    arr.splice(0, 3, answer);
+  }
+  let finalAnswer = operate(Number(arr[0]), arr[1], Number(arr[2]));
+  display.textContent = finalAnswer;
 }
