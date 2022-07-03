@@ -53,11 +53,13 @@ body {
 }
 .calculator #zero {
   grid-column: span 2;
-  aspect-ratio: 2/1;
+  aspect-ratio: 2.5/1;
+  align-self: center;
 }
 .calculator #clear {
   grid-column: span 3;
-  aspect-ratio: 3/1;
+  aspect-ratio: 4/1;
+  align-self: center;
   background-color: var(--lightGray);
   color: black;
 }
