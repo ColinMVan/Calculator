@@ -45,10 +45,6 @@ body {
     }
   }
 
-  #divide {
-    align-self: end;
-  }
-
   .orangeNum {
     background-color: orange;
 
@@ -64,15 +60,17 @@ body {
   }
 
   #clear {
-    grid-column: span 3;
-    aspect-ratio: 4 / 1;
-    align-self: center;
     background-color: var(--lightGray);
     color: black;
 
     &:hover {
       background-color: hsl(0, 0%, 70%);
     }
+  }
+
+  #plusminus,
+  #percentage {
+    @extend #clear;
   }
 
   #resultsBar {

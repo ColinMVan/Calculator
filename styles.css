@@ -42,9 +42,6 @@ body {
   background-color: hsl(0deg, 0%, 45%);
   transform: translateY(-4px);
 }
-.calculator #divide {
-  align-self: end;
-}
 .calculator .orangeNum {
   background-color: orange;
 }
@@ -56,14 +53,13 @@ body {
   aspect-ratio: 2.5/1;
   align-self: center;
 }
-.calculator #clear {
-  grid-column: span 3;
-  aspect-ratio: 4/1;
-  align-self: center;
+.calculator #clear, .calculator #plusminus,
+.calculator #percentage {
   background-color: var(--lightGray);
   color: black;
 }
-.calculator #clear:hover {
+.calculator #clear:hover, .calculator #plusminus:hover,
+.calculator #percentage:hover {
   background-color: hsl(0deg, 0%, 70%);
 }
 .calculator #resultsBar {

@@ -14,6 +14,9 @@ function displayResults(str) {
   //   if (results === "0") {
   //     results = "";
   //   }
+  if (results.includes(".") && str === ".") {
+    return;
+  }
   results += str;
   display.textContent = results;
 }
