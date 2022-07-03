@@ -71,6 +71,13 @@ operators.forEach((e) => {
   });
 });
 
+// makes the current number a negative
+plusminus.addEventListener("click", () => {
+  results *= -1;
+  display.textContent = results;
+});
+
+// returns the current number as a percentage
 percentage.addEventListener("click", () => {
   results *= 0.01;
   display.textContent = results;
