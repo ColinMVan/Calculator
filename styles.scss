@@ -15,14 +15,17 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background-color: black;
 }
 
 .calculator {
-  width: min(80%, 500px);
+  width: min(90%, 500px);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  background-color: black;
+  padding: 2em;
+  padding-top: 4em;
+  border-radius: 10px;
 
   button {
     background-color: var(--darkGray);
@@ -41,6 +44,10 @@ body {
 
   .orangeNum {
     background-color: orange;
+
+    &:hover {
+      background-color: hsl(40, 100%, 72%);
+    }
   }
 
   #zero {
@@ -53,25 +60,31 @@ body {
     aspect-ratio: 3 / 1;
     background-color: var(--lightGray);
     color: black;
+
+    &:hover {
+      background-color: hsl(0, 0%, 70%);
+    }
   }
 
   #resultsBar {
-    background-color: var(--darkGray);
     grid-column: span 4;
-    aspect-ratio: 4 / 1;
     border-radius: 100vmax;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     color: white;
+    justify-content: flex-end;
     font-size: 3rem;
 
     p {
-      padding-right: 1em;
+      margin-right: 1.8rem;
     }
   }
 
   #equals {
     background-color: orange;
+
+    &:hover {
+      background-color: hsl(40, 100%, 72%);
+    }
   }
 }

@@ -8,6 +8,9 @@ let operator = "";
 let clickedOperator;
 
 function displayResults(str) {
+  if (results === "0") {
+    results = "";
+  }
   results += str;
   display.textContent = results;
 }
@@ -24,7 +27,7 @@ nums.forEach((e) => {
 
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", () => {
-  results = "";
+  results = "0";
   display.textContent = results;
   firstNum = 0;
   secondNum = 0;
