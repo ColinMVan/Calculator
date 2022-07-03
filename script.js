@@ -93,7 +93,14 @@ const decimalCount = (num) => {
 
 const add = (n, n2) => n + n2;
 const subtract = (n, n2) => n - n2;
-const multiply = (n, n2) => n * n2;
+const multiply = (n, n2) => {
+  let answer = n * n2;
+  if (decimalCount(answer) > 5) {
+    return answer.toFixed(6);
+  } else {
+    return answer;
+  }
+};
 const divide = (n, n2) => {
   let answer = n / n2;
   if (decimalCount(answer) > 5) {
