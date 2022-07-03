@@ -23,7 +23,6 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  align-items: end;
   background-color: black;
   padding: 2em;
   padding-top: 4em;
@@ -42,6 +41,9 @@ body {
   cursor: pointer;
   background-color: hsl(0deg, 0%, 45%);
   transform: translateY(-4px);
+}
+.calculator #divide {
+  align-self: end;
 }
 .calculator .orangeNum {
   background-color: orange;
